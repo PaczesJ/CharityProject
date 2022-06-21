@@ -164,6 +164,55 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
+      // Lista inputów : worki, ulica, miasto, kod pocztowy, termin odbioru, uwagi
+      let arrayOfInputs = document.querySelectorAll(".form-group--inline label input");
+      function  getInputText(elements) {
+        let newArray = [];
+        elements.forEach(function (item) {
+          newArray.push(item.value);
+        })
+        return newArray;
+      }
+      let array1 = getInputText(arrayOfInputs);
+      console.log(array1)
+      // Wyświetlanie danych adresowych i czasu odbioru
+      let addressStreet = document.querySelector("[address]").firstElementChild.nextElementSibling.firstElementChild;
+      let addressCity = document.querySelector("[address]").firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
+      let addressZipCode = document.querySelector("[address]").firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling;
+      addressStreet.innerText = array1[1]
+      addressCity.innerText = array1[2];
+      addressZipCode.innerText = array1[3];
+      let pickupDate = document.querySelector("[pickup]").firstElementChild.nextElementSibling.firstElementChild;
+      let pickupTime = document.querySelector("[pickup]").firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
+      let pickupComment = document.querySelector("[pickup]").firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling;
+      pickupDate.innerText = array1[4];
+      pickupTime.innerText = array1[5];
+      pickupComment.innerText = array1[6];
+
+      // Lista kategorii
+      let categories = document.querySelectorAll("[category-name]:checked");
+      let array2 = getInputText(categories);
+
+      // Wybrana instytucja
+      let institution = document.querySelector("[institution-name]:checked")
+          .nextElementSibling.nextElementSibling.firstElementChild.innerText;
+      // Dla jakiej fundacji - display
+      const institutionDisplay = document.querySelector(".icon-hand").nextElementSibling;
+      institutionDisplay.innerText = institution;
+
+      // Liczba worków - display oraz wybranych kategorii
+      const bags = document.querySelector(".icon-bag").nextElementSibling;
+      if(parseInt(array1[0]) === 1) {
+        bags.innerText = array1[0] + " worek zawierający: " + array2[0].value;
+      }else if(parseInt(array1[0]) === 2 || parseInt(array1[0]) === 3 ||  parseInt(array1[0]) === 4) {
+        bags.innerText = array1[0] + " worki zawierające: " + array2.forEach(function(element) {
+           console.log(element.title)
+        });
+      }else {
+        bags.innerText = array1[0] + " worków zawierających: " + array2;
+      }
+
     }
 
   }
@@ -171,4 +220,6 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+
+
 });

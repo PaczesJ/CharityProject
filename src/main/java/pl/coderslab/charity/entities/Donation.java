@@ -1,11 +1,11 @@
 package pl.coderslab.charity.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -14,6 +14,7 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NumberFormat
     private Integer quantity;
     @ManyToMany
     private List<Category> categories;
@@ -25,10 +26,10 @@ public class Donation {
     private String city;
     @NotNull
     private String zipCode;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, fallbackPatterns = {"M/d/yy", "dd.MM.yyyy"})
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, fallbackPatterns = {"hh:mm:ss"})
-    private LocalTime pickUpTime;
+    @DateTimeFormat(pattern = "hh:mm")
+    private String pickUpTime;
     private String pickUpComment;
 
     public Long getId() {
@@ -95,11 +96,11 @@ public class Donation {
         this.pickUpDate = pickUpDate;
     }
 
-    public LocalTime getPickUpTime() {
+    public String getPickUpTime() {
         return pickUpTime;
     }
 
-    public void setPickUpTime(LocalTime pickUpTime) {
+    public void setPickUpTime(String pickUpTime) {
         this.pickUpTime = pickUpTime;
     }
 

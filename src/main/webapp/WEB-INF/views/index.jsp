@@ -13,8 +13,7 @@
     <%@include file="header.jsp" %>
     <div class="slogan container container--90">
         <div class="slogan--item">
-            <h1>
-                Zacznij pomagać!<br/>
+            <h1>Zacznij pomagać!<br/>
                 Oddaj niechciane rzeczy w zaufane ręce
             </h1>
         </div>
@@ -27,15 +26,13 @@
             <em>${bags}</em>
 
             <h3>Oddanych worków</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
-                tempora!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum tempora!</p>
         </div>
 
         <div class="stats--item">
             <em>${donations}</em>
             <h3>Przekazanych darów</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
-                quam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas quam.</p>
         </div>
 
     </div>
@@ -73,12 +70,10 @@
 <section class="about-us">
     <div class="about-us--text">
         <h2>O nas</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
-            optio esse quisquam illo omnis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero optio esse quisquam illo omnis.</p>
         <img src="<c:url value="/resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="/resources/images/about-us.jpg"/>" alt="People in circle"/>
-    </div>
+    <div class="about-us--image"><img src="<c:url value="/resources/images/about-us.jpg"/>" alt="People in circle"/></div>
 </section>
 
 <section class="help">
@@ -91,25 +86,22 @@
 
         <ul class="help--slides-items">
             <c:forEach items="${institutions}" var="institution" step="2" varStatus="i">
-            <li>
-                <div class="col">
+                <li>
+                    <div class="col">
                         <div class="title">Fundacja "<c:out value='${institutions.get(i.index).name}'/>"</div>
                         <div class="subtitle">Cel i misja: <c:out value='${institutions.get(i.index).description}'/></div>
-                </div>
-                <div class="col">
+                    </div>
+                    <div class="col">
                         <div class="title">Fundacja "<c:out value='${institutions.get(i.index + 1).name}'/>"</div>
                         <div class="subtitle">Cel i misja: <c:out value='${institutions.get(i.index + 1).description}'/></div>
-                </div>
-            </li>
+                    </div>
+                </li>
             </c:forEach>
         </ul>
     </div>
 
 </section>
-
 <%@include file="footer.jsp" %>
->
-
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>
